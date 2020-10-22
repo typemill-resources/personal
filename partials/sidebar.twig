@@ -1,0 +1,13 @@
+<button id="menu" class="button-reset dn-l w-100 dib pv2 mv1 bn bg-custom-red white pointer">{{ settings.themes.personal.navigation | default('Navigation') }}</button>
+
+<ul id="navi" class="list w-100 tc pa0 ma0 close">
+
+	{% for element in navigation %}
+
+		<li class="">
+			<a class="link w-100 dib pv2 mv1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
+		</li>
+
+	{% endfor %}
+
+</ul>

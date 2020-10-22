@@ -1,0 +1,84 @@
+name: Personal Theme
+version: 1.1.0
+description: An elegant and clean theme for simple personal websites. 
+author: Trendschau
+homepage: https://trendschau.net
+licence: MIT
+paypal: https://paypal.me/typemill
+amount: 15
+
+settings:
+  navigation: Navigation
+
+forms:
+  fields:
+
+    subheadline:
+      type: textarea
+      label: Sub-headline below the page titel
+      placeholder: You can use markdown
+      size: 200
+
+    navigation:
+      type: text
+      label: Label for mobile navigation button
+      placeholder: Navigation
+      size: 30
+
+    fieldset0:
+      type: fieldset
+      legend: Social media buttons
+      fields:
+        socialButtons:
+          type: checkboxlist
+          label: Buttons below navigation
+          help: Buttons appear in the left sidebar below the navigation. Add the urls for each button below.
+          options:
+            facebook: Facebook
+            twitter: Twitter
+            instagram: Instagram
+            linkedin2: Linkedin
+            xing2: Xing
+            play: YouTube
+            vimeo: Vimeo
+            dribbble: Dribbble
+            behance: Behance
+            pinterest2: Pinterest
+            github: GitHub
+            link: Other link
+        facebook:
+          type: url
+          label: Link to Facebook
+        twitter:
+          type: url
+          label: Link to Twitter
+        instagram:
+          type: url
+          label: Link to Instragram
+        linkedin2:
+          type: url
+          label: Link to LinkedIn
+        xing2:
+          type: url
+          label: Link to Xing
+        play:
+          type: url
+          label: Link to YouTube
+        vimeo:
+          type: url
+          label: Link to Vimeo
+        dribbble:
+          type: url
+          label: Link to Dribble
+        behance:
+          type: url
+          label: Link to Behance
+        pinterest2:
+          type: url
+          label: Link to Pinterest
+        github:
+          type: url
+          label: Link to GitHub
+        link:
+          type: url
+          label: Other link

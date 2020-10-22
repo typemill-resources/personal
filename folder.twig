@@ -1,0 +1,69 @@
+<section>
+	<article class="pv3 ph1 ph5-l center mw6 mw7-l">
+
+		{% if home %}
+			<div class="ph3 pt5">
+		{% else %}
+				{% include 'partials/breadcrumb.twig' %}
+			<div class="ph3">
+		{% endif %}
+
+		{% if content is empty %}
+
+			<h1>{{ item.name }}</h1>
+
+		{% endif %}
+
+			<h1>{{ title }}</h1>
+		
+		{{ content }}
+
+		</div>
+	</article>
+</section>
+<section>
+	<div class="ph0 ph5-l center mw6 mw7-l">
+		<ul class="list w-100 pa0">
+
+
+			{% if item.contains == 'pages' %}
+
+					{% for element in item.folderContent %}
+
+						{% set page = getPageMeta(settings, element) %}
+
+						<li class="hover-bg-custom-gray dib w-100 bt b--custom-gray">
+							<a class="link dark-gray" href="{{ element.urlAbs }}">
+								<div class="pv2 ph3">
+									<h2 class="mb2">{{ page.meta.title }}</h2>
+									<p>{{ page.meta.description }}</p>
+								</div>
+							</a>
+						</li>
+		 
+					{% endfor %}
+
+			{% elseif item.contains == 'posts' %}
+
+					{% for element in item.folderContent %}
+
+						{% set post = getPageMeta(settings, element) %}
+						{% set date = element.order[0:4] ~ '-' ~ element.order[4:2] ~ '-' ~ element.order[6:2] %}
+
+						<li class="hover-bg-custom-gray dib w-100 bt b--custom-gray">
+							<a class="link dark-gray" href="{{ element.urlAbs }}">
+								<div class="pv2 ph3">
+									<h2 class="mb2">{{ post.meta.title }}</h2>
+									<small>{{ date | date("d.m.Y") }} | {{ post.meta.author }}</small>
+									<p>{{ post.meta.description }}</p>
+								</div>
+							</a>
+						</li>
+									
+					{% endfor %}
+					
+			{% endif %}	
+
+		</ul>
+	</div>
+</section>
