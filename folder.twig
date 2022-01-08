@@ -45,7 +45,13 @@
 
 			{% elseif item.contains == 'posts' %}
 
-					{% for element in item.folderContent %}
+
+				{% set pagesize = 10 %}
+				{% set pages = ( item.folderContent|length / pagesize)|round(0, 'ceil') %}
+				{% set currentpage = currentpage ? currentpage : 1 %}
+				{% set currentposts = (currentpage - 1) * pagesize %} 
+
+					{% for element in item.folderContent|slice(currentposts, pagesize) %}
 
 						{% set post = getPageMeta(settings, element) %}
 						{% set date = element.order[0:4] ~ '-' ~ element.order[4:2] ~ '-' ~ element.order[6:2] %}
@@ -61,6 +67,23 @@
 						</li>
 									
 					{% endfor %}
+
+
+					{% if pages > 1 %}
+						<div class="pv2 ph3">
+							<hr class="mv4">
+							<p>Page: 
+								{% for i in 1 .. pages %}
+									{% if i == currentpage %}
+										{{i}}
+									{% else %}
+										<a class="page" href="{{ item.urlAbs }}/p/{{i}}">{{i}}</a>
+									{% endif %}
+								{% endfor %}
+							</p>
+						</div>
+					{% endif %}
+
 					
 			{% endif %}	
 
