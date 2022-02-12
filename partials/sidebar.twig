@@ -1,13 +1,46 @@
 <button id="menu" class="button-reset dn-l w-100 dib pv2 mv1 bn bg-custom-red white pointer">{{ settings.themes.personal.navigation | default('Navigation') }}</button>
 
-<ul id="navi" class="list w-100 tc pa0 ma0 close">
 
-	{% for element in navigation %}
+{% if settings.themes.personal.navsecondlevel %}
 
-		<li class="">
-			<a class="link w-100 dib pv2 mv1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
-		</li>
+	<ul id="navi" class="list w-100 tl pa0 ma0 close">
 
-	{% endfor %}
+		{% for element in navigation %}
 
-</ul>
+			<li class="">
+
+				{% if ( (element.active or element.activeParent) and element.folderContent) %}
+					<a class="link w-100 dib pa2 mt1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
+					<ul class="list w-100 tl bt b--white pa0 ma0">
+						{% for subelement in element.folderContent %}
+							<li><a class="link w-100 pv1 ph2 dib bn hover-bg-custom-red hover-white bg-white dark-gray  {% if (subelement.active) %} active{% endif %}" href="{{ subelement.urlAbs }}">&#8594; {{ subelement.name }}</a></li>
+						{% endfor %}
+					</ul>
+
+				{% else %}
+
+					<a class="link w-100 dib pa2 mv1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
+
+				{% endif %}
+
+			</li>
+
+		{% endfor %}
+
+	</ul>
+
+{% else %}
+
+	<ul id="navi" class="list w-100 tc pa0 ma0 close">
+
+		{% for element in navigation %}
+
+			<li class="">
+				<a class="link w-100 dib pv2 mv1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
+			</li>
+
+		{% endfor %}
+
+	</ul>
+
+{% endif %}

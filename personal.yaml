@@ -1,5 +1,5 @@
 name: Personal Theme
-version: 1.2.0
+version: 1.3.0
 description: An elegant and clean theme for simple personal websites. 
 author: Trendschau
 homepage: https://trendschau.net
@@ -24,6 +24,11 @@ forms:
       label: Label for mobile navigation button
       placeholder: Navigation
       size: 30
+
+    navsecondlevel:
+      type: checkbox
+      label: Second Level Navigation
+      checkboxlabel: Show the second level in the sidebar navigation
 
     fieldset0:
       type: fieldset
