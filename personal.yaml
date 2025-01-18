@@ -1,11 +1,9 @@
 name: Personal Theme
-version: 1.3.0
+version: 2.0.0
 description: An elegant and clean theme for simple personal websites. 
-author: Trendschau
+author: Trendschau Digital
 homepage: https://trendschau.net
-licence: MIT
-paypal: https://paypal.me/typemill
-amount: 15
+license: MIT
 
 settings:
   navigation: Navigation

@@ -13,10 +13,10 @@
 		{{ assets.renderMeta() }}
 
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ base_url }}/themes/personal/css/style.css?20220108" />
-			
-			{{ assets.activateTachyons() }}
 
+			<link rel="stylesheet" href="{{ base_url }}/themes/personal/css/style.css?20220222" />
+			<link rel="stylesheet" href="{{ base_url }}/themes/personal/css/tachyons.css?20240222" />
+			
 			{{ assets.renderCSS() }}
 			
 		{% endblock %}
@@ -103,7 +103,9 @@
 						</p>
 					</div>
 					<div class="tc pb3 f6">
-						{{ markdown(settings.themes.personal.subheadline) }}
+						{% if settings.themes.personal.subheadline %}
+							{{ markdown(settings.themes.personal.subheadline) }}
+						{% endif %}						
 					</div>
 				</header>
 
