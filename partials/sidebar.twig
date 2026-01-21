@@ -1,7 +1,7 @@
 <button id="menu" class="button-reset dn-l w-100 dib pv2 mv1 bn bg-custom-red white pointer">{{ settings.themes.personal.navigation | default('Navigation') }}</button>
 
 
-{% if settings.themes.personal.navsecondlevel %}
+{% if theme.navsecondlevel %}
 
 	<ul id="navi" class="list w-100 tl pa0 ma0 close">
 
@@ -9,17 +9,23 @@
 
 			<li class="">
 
-				{% if ( (element.active or element.activeParent) and element.folderContent) %}
-					<a class="link w-100 dib pa2 mt1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
-					<ul class="list w-100 tl bt b--white pa0 ma0">
-						{% for subelement in element.folderContent %}
-							<li><a class="link w-100 pv1 ph2 dib bn hover-bg-custom-red hover-white bg-white dark-gray  {% if (subelement.active) %} active{% endif %}" href="{{ subelement.urlAbs }}">&#8594; {{ subelement.name }}</a></li>
-						{% endfor %}
-					</ul>
+				{% if (element.folderContent and element.contains == 'pages') %}
+					
+					<a class="left-link-bg left-link-bg-hover left-link-color left-link-color-hover link flex justify-between w-100 dib pa2 mt1 bn {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">
+						<span>{{ element.name }}</span>
+						<span class="arrow-down w2"></span>
+					</a>
+					{% if (element.active or element.activeParent) %}
+						<ul class="list w-100 tl bt b--white pa0 ma0">
+							{% for subelement in element.folderContent %}
+								<li><a class="left-link-bg left-link-bg-hover left-link-color left-link-color-hover link w-100 pv1 ph2 dib bn {% if (subelement.active) %} active{% endif %}" href="{{ subelement.urlAbs }}">&#8594; {{ subelement.name }}</a></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
 
 				{% else %}
 
-					<a class="link w-100 dib pa2 mv1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
+					<a class="left-link-bg left-link-bg-hover left-link-color left-link-color-hover link w-100 dib pa2 mv1 bn {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
 
 				{% endif %}
 
@@ -36,7 +42,7 @@
 		{% for element in navigation %}
 
 			<li class="">
-				<a class="link w-100 dib pv2 mv1 bn bg-white hover-bg-custom-red dark-gray {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
+				<a class="left-link-bg left-link-bg-hover left-link-color left-link-color-hover link w-100 dib pv2 mv1 bn {% if (element.active or element.activeParent) %} active{% endif %}" href="{{ element.urlAbs }}">{{ element.name }}</a>
 			</li>
 
 		{% endfor %}

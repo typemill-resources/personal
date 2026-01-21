@@ -1,34 +1,188 @@
 name: Personal Theme
-version: 2.0.0
+version: 2.1.0
 description: An elegant and clean theme for simple personal websites. 
 author: Trendschau Digital
 homepage: https://trendschau.net
 license: MIT
 
 settings:
-  navigation: Navigation
+  navigation: 'Navigation'
+
+readymades:
+  standard: 
+    name: 'Standard'
+    description: 'The standard layout with red and light-brown colors.'
+    settings:
+      subheadline: 'My Subheadline below the Logo'
+      navigation: 'Navigation'
+      navsecondlevel: true
+      left_bg: '#E5E2D3'
+      left_color: '#333'
+      left_link_bg: '#fff'
+      left_link_color: '#333'
+      left_link_bg_hover: '#E8634E'
+      left_link_color_hover: '#fff'
+      right_bg: '#fff'
+      right_color: '#333'
+      right_link: '#E8634E'
+      socialButtons:
+        - linkedin2
+        - play
+      linkedin2: 'https://typemill.net'
+      play: 'https://typemill.net'
+
+  dark: 
+    name: 'Dark'
+    description: 'Dark layout without a second navigation level.'
+    settings:
+      subheadline: 'My Subheadline below the Logo'
+      navigation: 'Navigation'
+      navsecondlevel: false
+      left_bg: '#333'
+      left_color: '#fff'
+      left_link_bg: '#444'
+      left_link_color: '#fff'
+      left_link_bg_hover: '#E8634E'
+      left_link_color_hover: '#fff'
+      right_bg: '#444'
+      right_color: '#fff'
+      right_link: '#E8634E'
+      socialButtons:
+        - linkedin2
+        - play
+      linkedin2: 'https://typemill.net'
+      play: 'https://typemill.net'
+
+  purple:
+    name: 'Purple'
+    description: 'Modern purple layout with elegant highlights.'
+    settings:
+      subheadline: 'My Subheadline below the Logo'
+      navigation: 'Navigation'
+      navsecondlevel: true
+      left_bg: '#F1EDF7'
+      left_color: '#2D1E4F'
+      left_link_bg: '#ffffff'
+      left_link_color: '#2D1E4F'
+      left_link_bg_hover: '#7C3AED'
+      left_link_color_hover: '#ffffff'
+      right_bg: '#ffffff'
+      right_color: '#2D1E4F'
+      right_link: '#7C3AED'
+      socialButtons:
+        - linkedin2
+        - play
+      linkedin2: 'https://typemill.net'
+      play: 'https://typemill.net'
+
+  blackwhite:
+    name: 'Black & White'
+    description: 'Minimal black and white layout with strong contrasts.'
+    settings:
+      subheadline: 'My Subheadline below the Logo'
+      navigation: 'Navigation'
+      navsecondlevel: true
+      left_bg: '#F5F5F5'
+      left_color: '#111'
+      left_link_bg: '#FFFFFF'
+      left_link_color: '#111'
+      left_link_bg_hover: '#000000'
+      left_link_color_hover: '#FFFFFF'
+      right_bg: '#FFFFFF'
+      right_color: '#111'
+      right_link: '#000000'
+      socialButtons:
+        - linkedin2
+        - play
+      linkedin2: 'https://typemill.net'
+      play: 'https://typemill.net'
+
+  split:
+    name: 'Split Contrast'
+    description: 'Light left column with a darker, saturated right content area.'
+    settings:
+      subheadline: 'My Subheadline below the Logo'
+      navigation: 'Navigation'
+      navsecondlevel: true
+      left_bg: '#F1F5F9'
+      left_color: '#1E293B'
+      left_link_bg: '#FFFFFF'
+      left_link_color: '#1E293B'
+      left_link_bg_hover: '#334155'
+      left_link_color_hover: '#FFFFFF'
+      right_bg: '#1E293B'
+      right_color: '#F8FAFC'
+      right_link: '#60A5FA'
+      socialButtons:
+        - linkedin2
+        - play
+      linkedin2: 'https://typemill.net'
+      play: 'https://typemill.net'
 
 forms:
   fields:
 
-    subheadline:
-      type: textarea
-      label: Sub-headline below the page titel
-      placeholder: You can use markdown
-      size: 200
+    fieldsetNavi:
+      type: fieldset
+      legend: 'Navigation'
+      fields:
+        subheadline:
+          type: textarea
+          label: Sub-headline below the page titel
+          placeholder: You can use markdown
+          size: 200
+        navigation:
+          type: text
+          label: Label for mobile navigation button
+          placeholder: Navigation
+          size: 30
+        navsecondlevel:
+          type: checkbox
+          label: Second Level Navigation
+          checkboxlabel: Show the second level in the sidebar navigation
 
-    navigation:
-      type: text
-      label: Label for mobile navigation button
-      placeholder: Navigation
-      size: 30
+    fieldsetColors:
+      type: fieldset
+      legend: Colors
+      fields:
+        left_bg:
+          type: text
+          label: 'Background Color Left'
+          placeholder: '#E5E2D3'
+        left_color:
+          type: text
+          label: 'Text Color Left'
+          placeholder: '#333'
+        left_link_bg:
+          type: text
+          label: 'Link Background Left'
+          placeholder: '#fff'
+        left_link_color:
+          type: text
+          label: 'Link Color Left'
+          placeholder: '#333'
+        left_link_bg_hover:
+          type: text
+          label: 'Link Background Hover Left'
+          placeholder: '#E8634E'
+        left_link_color_hover:
+          type: text
+          label: 'Link Color Hover Left'
+          placeholder: '#fff'
+        right_bg:
+          type: text
+          label: 'Background Color Right'
+          placeholder: '#fff'
+        right_color:
+          type: text
+          label: 'Text Color Right'
+          placeholder: '#333'
+        right_link:
+          type: text
+          label: 'Link Color Right'
+          placeholder: '#E8634E'
 
-    navsecondlevel:
-      type: checkbox
-      label: Second Level Navigation
-      checkboxlabel: Show the second level in the sidebar navigation
-
-    fieldset0:
+    fieldsetSocial:
       type: fieldset
       legend: Social media buttons
       fields:

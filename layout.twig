@@ -14,15 +14,33 @@
 
 		{% block stylesheets %}
 
-			<link rel="stylesheet" href="{{ base_url }}/themes/personal/css/style.css?20220222" />
 			<link rel="stylesheet" href="{{ base_url }}/themes/personal/css/tachyons.css?20240222" />
+			<link rel="stylesheet" href="{{ base_url }}/themes/personal/css/style.css?20260120" />
 			
 			{{ assets.renderCSS() }}
+
+			<style>
+
+		        :root {
+		            --left-bg: {{ theme.left_bg ? theme.left_bg : '#E5E2D3' }};
+		            --left-color: {{ theme.left_color ? theme.left_color : '#333' }};
+		            --left-link-bg: {{ theme.left_link_bg ? theme.left_link_bg : '#fff' }};
+		            --left-link-color: {{ theme.left_link_color ? theme.left_link_color : '#333' }};
+		            --left-link-bg-hover: {{ theme.left_link_bg_hover ? theme.left_link_bg_hover : '#E8634E' }};
+		            --left-link-color-hover: {{ theme.left_link_color_hover ? theme.left_link_color_hover : '#fff' }};
+		            --right-bg: {{ theme.right_bg ? theme.right_bg : '#fff' }};
+		            --right-color: {{ theme.right_color ? theme.right_color : '#333' }};
+		            --right-link: {{ theme.right_link ? theme.right_link : '#E8634E' }};
+		        }
+
+			</style>
+
+
 			
 		{% endblock %}
 
 	</head>
-	<body class="lh-copy sans-serif dark-gray">
+	<body class="lh-copy sans-serif dark-gray right-bg">
 		
 		<svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<defs>
@@ -85,15 +103,15 @@
 			</defs>
 		</svg>
 	
-		<div class="relative fixed-l w-100 bt bw3 b--custom-red z-1"></div>
+		<div class="relative fixed-l w-100 bt bw3 right-link z-1"></div>
 
-		<section class="relative fixed-l overflow-y-auto top-0 left-0 bottom-0 h-100 br1 w-100 w-40-l pv3 pv5-l ph1 bg-custom-gray">
+		<section class="left-bg left-color relative fixed-l overflow-y-auto top-0 left-0 bottom-0 h-100 br1 w-100 w-40-l pv3 pv5-l ph1">
 			
 			<div class="w-90 w-60-l center mw6">
 				<header>
 					<div class="logo tc">
 						<p class="mt4">
-							<a class="link dark-gray f3 b" href="{{ base_url }}" title="Link zur Homepage">
+							<a class="left-color link f3 b" href="{{ base_url }}" title="Link zur Homepage">
 								{% if logo %}
 									<img src="{{ base_url }}/{{ logo }}" class="logo"/>
 								{% else %}
@@ -103,8 +121,8 @@
 						</p>
 					</div>
 					<div class="tc pb3 f6">
-						{% if settings.themes.personal.subheadline %}
-							{{ markdown(settings.themes.personal.subheadline) }}
+						{% if theme.subheadline %}
+							{{ markdown(theme.subheadline) }}
 						{% endif %}						
 					</div>
 				</header>
@@ -115,9 +133,9 @@
 
 				<ul class="list w-100 tc pa2 flex justify-center">
 
-					{% for button,key in settings.themes.personal.socialButtons %}
-						{% if settings.themes.personal[button] %}
-							<li class="pa2"><a href="{{ settings.themes.personal[button] }}" target="_blank"><svg class="icon icon-{{button}} br-100 pa2 dib bg-dark-gray hover-bg-custom-red white"><use xlink:href="#icon-{{button}}"></use></svg></a></li>
+					{% for key,button in theme.socialButtons %}
+						{% if theme[button] %}
+							<li class="pa2"><a href="{{ theme[button] }}" target="_blank"><svg class="bg-dark-gray left-link-bg-hover white icon icon-{{button}} br-100 pa2 dib"><use xlink:href="#icon-{{button}}"></use></svg></a></li>
 						{% endif %}
 					{% endfor %}
 
@@ -127,11 +145,11 @@
 
 		</section>
 
-		<div class="w-100 w-60-l ml-40-l bg-white">
+		<div class="w-100 w-60-l ml-40-l right-bg right-color">
 
 			{% block content %}{% endblock %}
 			
-			<footer class="ph1 ph5-l center mw6 mw7-l">
+			<footer class="ph1 ph5-l pv3 center mw6 mw7-l">
 				{% include 'partials/footer.twig' %}
 			</footer>
 

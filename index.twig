@@ -1,6 +1,8 @@
 {% extends '/layout.twig' %}
+{% set theme = settings.themes.personal %}
+{% set meta = metatabs.meta %}
 
-{% block title %}{{ metatabs.meta.title }} | {{ settings.title }}{% endblock %}
+{% block title %}{{ meta.title }} | {{ settings.title }}{% endblock %}
 
 {% block content %}
 

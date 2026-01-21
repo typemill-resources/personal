@@ -21,7 +21,7 @@
 		</div>
 	</article>
 </section>
-<section>
+<section class="articlelist">
 	<div class="ph0 ph5-l center mw6 mw7-l">
 		<ul class="list w-100 pa0">
 
@@ -32,8 +32,8 @@
 
 						{% set page = getPageMeta(settings, element) %}
 
-						<li class="hover-bg-custom-gray dib w-100 bt b--custom-gray">
-							<a class="link dark-gray" href="{{ element.urlAbs }}">
+						<li class="dib w-100 bt">
+							<a class="link" href="{{ element.urlAbs }}">
 								<div class="pv2 ph3">
 									<h2 class="mb2">{{ page.meta.title }}</h2>
 									<p>{{ page.meta.description }}</p>
@@ -56,8 +56,8 @@
 						{% set post = getPageMeta(settings, element) %}
 						{% set date = element.order[0:4] ~ '-' ~ element.order[4:2] ~ '-' ~ element.order[6:2] %}
 
-						<li class="hover-bg-custom-gray dib w-100 bt b--custom-gray">
-							<a class="link dark-gray" href="{{ element.urlAbs }}">
+						<li class="dib w-100 bt">
+							<a class="link" href="{{ element.urlAbs }}">
 								<div class="pv2 ph3">
 									<h2 class="mb2">{{ post.meta.title }}</h2>
 									<small>{{ date | date("d.m.Y") }} | {{ post.meta.author }}</small>
